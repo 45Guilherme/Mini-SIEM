@@ -24,6 +24,9 @@ def ler_logs(caminho):
                 else:
                  contador[ip] = 1
     return contador
+resultado = ler_logs("server.log")
+print(resultado)
+
        
        
        
