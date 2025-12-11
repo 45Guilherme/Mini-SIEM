@@ -68,4 +68,3 @@ def gerar_relatorio(contador, limite=3):
                msg3 = f"🟢 Nenhum ataque detectado"
                print(colorir(msg3, "VERDE"))
                file.write(f"{timestamp} - 🟢 Nenhum ataque detectado\n")
-
