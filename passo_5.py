@@ -69,3 +69,12 @@ def gerar_relatorio(contador, limite=3):
                print(colorir(msg3, "VERDE"))
                file.write(f"{timestamp} - 🟢 Nenhum ataque detectado\n")
 
+def analisar_ip_interativo():
+    ip = input("Digite o IP que deseja analisar: ")
+    score = 0
+    tentativas_altas = input("Houve muitas tentativas de login? (S/N): ").upper()
+    if tentativas_altas == "S":
+        score +=1
+    porta_suspeita = input("O IP tentou acessar portas suspeitas? (S/N): ").upper()
+    if porta_suspeita == "S":
+        score +=1
