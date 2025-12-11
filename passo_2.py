@@ -1,3 +1,4 @@
+import re
 with open("server.log", "w") as file:
   file.write("Nov 12 14:33:01 server sshd[1201]: Failed password for root from 177.233.10.45 port 45821 ssh2\n")
   file.write("Nov 12 14:34:05 server sshd[1202]: Accepted password for user1 from 192.168.0.10 port 52345 ssh2\n")
@@ -7,10 +8,23 @@ with open("server.log", "w") as file:
 
 
 def ler_logs(caminho):
-    with open(caminho, "r") as file:
-      linha = file.readlines()
-      contador = []
-      for linha in file:
-         if "Failed password" in linha:
-            contador 
+    contador = {}
+    regex = r"from ([\d\.]+) port"
 
+    with open(caminho, "r") as file:
+      linhas = file.readlines()
+    for linha in linhas:
+            if "Failed password" in linha:        
+               match = re.search(regex, linha)
+               if match:
+                ip = match.group(1)
+
+                if ip in contador:
+                 contador[ip] += 1
+                else:
+                 contador[ip] = 1
+    return contador
+       
+       
+       
+    
